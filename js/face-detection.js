@@ -103,9 +103,6 @@ function startDetection(){
     if(!$(".loading").hasClass('d-none')){
       $(".loading").addClass('d-none')
     }
-    if($(".loading").hasClass('d-none')){
-      alert('done!');
-    }
   }, 300)
 }
 
