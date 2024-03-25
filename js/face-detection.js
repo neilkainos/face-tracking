@@ -7,22 +7,17 @@ let convas;
 let faceDetection;
 
 $("#launchcamera").click(function () {
-  if(this.checked){
-      webcam.start()
-          .then(result =>{
-             cameraStarted();
-             webcamElement.style.transform = "";
-             console.log("webcam started");
-          })
-          .catch(err => {
-              displayError();
-          });
-  }
-  else {
-      cameraStopped();
-      webcam.stop();
-      console.log("webcam stopped");
-  }
+
+    webcam.start()
+        .then(result =>{
+           cameraStarted();
+           webcamElement.style.transform = "";
+           console.log("webcam started");
+        })
+        .catch(err => {
+            displayError();
+        });
+
 });
 
 $('#cameraFlip').click(function() {
