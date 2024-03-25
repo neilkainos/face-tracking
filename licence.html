@@ -12,7 +12,7 @@
     <script src='js/face-api.min.js'></script>
     <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
     <script>
-
+    $('.output, #continue').hide();
     (() => {
       // The width and height of the captured photo. We will set the
       // width to the value defined here, but the height will be
@@ -175,13 +175,13 @@
           <h1 class="govuk-heading-xl">Upload a picture of your licence</h1>
           <div class="camera">
             <video id="video">Video stream not available.</video>
-            <button id="startbutton">Capture licence</button>
+            <button id="startbutton" class="govuk-button">Capture licence</button>
           </div>
           <canvas id="canvas"> </canvas>
           <div class="output">
             <img id="photo" alt="The screen capture will appear in this box." />
           </div>
-
+          <button class="govuk-button" id="continue">Continue</button>
         </div>
 
       </div>
@@ -193,6 +193,7 @@
         <script>
         $('#startbutton').click(function(){
           $('#video, #canvas').hide();
+          $('.output, #continue').show();
         });
         </script>
 </body>
