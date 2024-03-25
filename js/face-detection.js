@@ -9,14 +9,30 @@ let faceDetection;
 $("#launchcamera").click(function () {
 
     webcam.start()
-        .then(result =>{
-           cameraStarted();
-           webcamElement.style.transform = "";
-           console.log("webcam started");
-        })
-        .catch(err => {
-            displayError();
-        });
+    .then(result =>{
+       cameraStarted();
+       webcamElement.style.transform = "";
+       console.log("webcam started");
+    })
+    .catch(err => {
+        displayError();
+    });
+
+    toggleContrl("box-switch", true);
+    toggleContrl("landmarks-switch", true);
+    toggleContrl("expression-switch", true);
+    toggleContrl("age-gender-switch", true);
+    $("#box-switch").prop('checked', true);
+    $(".loading").removeClass('d-none');
+    Promise.all([
+      faceapi.nets.tinyFaceDetector.load(modelPath),
+      faceapi.nets.faceLandmark68TinyNet.load(modelPath),
+      faceapi.nets.faceExpressionNet.load(modelPath),
+      faceapi.nets.ageGenderNet.load(modelPath)
+    ]).then(function(){
+      createCanvas();
+      startDetection();
+    })
 
 });
 
@@ -34,21 +50,7 @@ $("#webcam").bind("loadedmetadata", function () {
 
 $("#launchcamera").click(function () {
 
-    toggleContrl("box-switch", true);
-    toggleContrl("landmarks-switch", true);
-    toggleContrl("expression-switch", true);
-    toggleContrl("age-gender-switch", true);
-    $("#box-switch").prop('checked', true);
-    $(".loading").removeClass('d-none');
-    Promise.all([
-      faceapi.nets.tinyFaceDetector.load(modelPath),
-      faceapi.nets.faceLandmark68TinyNet.load(modelPath),
-      faceapi.nets.faceExpressionNet.load(modelPath),
-      faceapi.nets.ageGenderNet.load(modelPath)
-    ]).then(function(){
-      createCanvas();
-      startDetection();
-    })
+
 });
 
 function createCanvas(){
