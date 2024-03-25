@@ -37,7 +37,15 @@ $("#webcam").bind("loadedmetadata", function () {
   displaySize = { width:this.scrollWidth, height: this.scrollHeight }
 });
 
-$("#detection-switch").change(function () {
+const webcamElement = document.getElementById('webcam');
+const webcam = new Webcam(webcamElement, 'user');
+const modelPath = 'models';
+let currentStream;
+let displaySize;
+let convas;
+let faceDetection;
+
+$("document").ready(function () {
   if(this.checked){
     toggleContrl("box-switch", true);
     toggleContrl("landmarks-switch", true);
