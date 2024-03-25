@@ -1,4 +1,4 @@
 <?php
-header("Location: face.html");
+header("Location: licence.html");
 exit();
 ?>
