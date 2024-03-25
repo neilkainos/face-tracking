@@ -6,7 +6,7 @@ let displaySize;
 let convas;
 let faceDetection;
 
-$("#webcam-switch").change(function () {
+$("#launchcamera").click(function () {
   if(this.checked){
       webcam.start()
           .then(result =>{
