@@ -32,8 +32,8 @@ $("#webcam").bind("loadedmetadata", function () {
   displaySize = { width:this.scrollWidth, height: this.scrollHeight }
 });
 
-$("#detection-switch").change(function () {
-  if(this.checked){
+$("#launchcamera").click(function () {
+
     toggleContrl("box-switch", true);
     toggleContrl("landmarks-switch", true);
     toggleContrl("expression-switch", true);
@@ -49,19 +49,6 @@ $("#detection-switch").change(function () {
       createCanvas();
       startDetection();
     })
-  }
-  else {
-    clearInterval(faceDetection);
-    toggleContrl("box-switch", false);
-    toggleContrl("landmarks-switch", false);
-    toggleContrl("expression-switch", false);
-    toggleContrl("age-gender-switch", false);
-    if(typeof canvas !== "undefined"){
-      setTimeout(function() {
-        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-      }, 1000);
-    }
-  }
 });
 
 function createCanvas(){
