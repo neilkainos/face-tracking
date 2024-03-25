@@ -140,10 +140,6 @@
       window.addEventListener("load", startup, false);
     })();
 
-    $('#startbutton').click(function(){
-      $('#video, #canvas').hide();
-    });
-
 
     </script>
 </head>
@@ -194,5 +190,10 @@
 </div>
 
         <script src="js/face-detection.js"></script>
+        <script>
+        $('#startbutton').click(function(){
+          $('#video, #canvas').hide();
+        });
+        </script>
 </body>
 </html>
