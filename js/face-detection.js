@@ -6,7 +6,7 @@ let displaySize;
 let convas;
 let faceDetection;
 
-$("document").ready(function () {
+$("#webcam-switch").change(function () {
   if(this.checked){
       webcam.start()
           .then(result =>{
@@ -18,17 +18,17 @@ $("document").ready(function () {
               displayError();
           });
   }
-  else {        
+  else {
       cameraStopped();
       webcam.stop();
       console.log("webcam stopped");
-  }        
+  }
 });
 
 $('#cameraFlip').click(function() {
     webcam.flip();
     webcam.start()
-    .then(result =>{ 
+    .then(result =>{
       webcamElement.style.transform = "";
     });
 });
@@ -37,15 +37,7 @@ $("#webcam").bind("loadedmetadata", function () {
   displaySize = { width:this.scrollWidth, height: this.scrollHeight }
 });
 
-const webcamElement = document.getElementById('webcam');
-const webcam = new Webcam(webcamElement, 'user');
-const modelPath = 'models';
-let currentStream;
-let displaySize;
-let convas;
-let faceDetection;
-
-$("document").ready(function () {
+$("#detection-switch").change(function () {
   if(this.checked){
     toggleContrl("box-switch", true);
     toggleContrl("landmarks-switch", true);
@@ -74,7 +66,7 @@ $("document").ready(function () {
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
       }, 1000);
     }
-  }        
+  }
 });
 
 function createCanvas(){
@@ -123,7 +115,7 @@ function startDetection(){
         ).draw(canvas)
       })
     }
-    
+
     if(!$(".loading").hasClass('d-none')){
       $(".loading").addClass('d-none')
     }
