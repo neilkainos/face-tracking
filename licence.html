@@ -139,6 +139,8 @@
       // once loading is complete.
       window.addEventListener("load", startup, false);
     })();
+
+    $('#')
     </script>
 </head>
 <body>
@@ -171,15 +173,11 @@
 
         <div class="contentarea">
           <h1 class="govuk-heading-xl">Upload a picture of your licence</h1>
-          <p>
-            This example demonstrates how to set up a media stream using your built-in
-            webcam, fetch an image from that stream, and create a PNG using that image.
-          </p>
           <div class="camera">
             <video id="video">Video stream not available.</video>
-            <button id="startbutton">Take photo</button>
+            <button id="startbutton">Capture licence</button>
           </div>
-          <canvas id="canvas"> </canvas>
+
           <div class="output">
             <img id="photo" alt="The screen capture will appear in this box." />
           </div>
