@@ -6,18 +6,39 @@ let displaySize;
 let convas;
 let faceDetection;
 
-$("#launchcamera").click(function () {
+$("#webcam-switch").change(function () {
+  if(this.checked){
+      webcam.start()
+          .then(result =>{
+             cameraStarted();
+             webcamElement.style.transform = "";
+             console.log("webcam started");
+          })
+          .catch(err => {
+              displayError();
+          });
+  }
+  else {
+      cameraStopped();
+      webcam.stop();
+      console.log("webcam stopped");
+  }
+});
 
+$('#cameraFlip').click(function() {
+    webcam.flip();
     webcam.start()
     .then(result =>{
-       cameraStarted();
-       webcamElement.style.transform = "";
-       console.log("webcam started");
-    })
-    .catch(err => {
-        displayError();
+      webcamElement.style.transform = "";
     });
+});
 
+$("#webcam").bind("loadedmetadata", function () {
+  displaySize = { width:this.scrollWidth, height: this.scrollHeight }
+});
+
+$("#detection-switch").change(function () {
+  if(this.checked){
     toggleContrl("box-switch", true);
     toggleContrl("landmarks-switch", true);
     toggleContrl("expression-switch", true);
@@ -33,24 +54,19 @@ $("#launchcamera").click(function () {
       createCanvas();
       startDetection();
     })
-
-});
-
-$('#cameraFlip').click(function() {
-    webcam.flip();
-    webcam.start()
-    .then(result =>{
-      webcamElement.style.transform = "";
-    });
-});
-
-$("#webcam").bind("loadedmetadata", function () {
-  displaySize = { width:this.scrollWidth, height: this.scrollHeight }
-});
-
-$("#launchcamera").click(function () {
-
-
+  }
+  else {
+    clearInterval(faceDetection);
+    toggleContrl("box-switch", false);
+    toggleContrl("landmarks-switch", false);
+    toggleContrl("expression-switch", false);
+    toggleContrl("age-gender-switch", false);
+    if(typeof canvas !== "undefined"){
+      setTimeout(function() {
+        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+      }, 1000);
+    }
+  }
 });
 
 function createCanvas(){
