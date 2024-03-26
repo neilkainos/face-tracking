@@ -5,7 +5,7 @@ let currentStream;
 let displaySize;
 let convas;
 let faceDetection;
-
+$('#continue').hide();
 $("#webcam-switch").change(function () {
   if(this.checked){
       webcam.start()
@@ -94,7 +94,10 @@ function startDetection(){
     const detections = await faceapi.detectAllFaces(webcamElement, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks(true).withFaceExpressions().withAgeAndGender()
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-    console.log('detection');
+    setTimeout(function() {
+      $('#continue').show();
+    }, 5000);
+
     if($("#box-switch").is(":checked")){
       faceapi.draw.drawDetections(canvas, resizedDetections)
     }
