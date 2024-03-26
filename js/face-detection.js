@@ -94,6 +94,7 @@ function startDetection(){
     const detections = await faceapi.detectAllFaces(webcamElement, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks(true).withFaceExpressions().withAgeAndGender()
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+    console.log('detection');
     if($("#box-switch").is(":checked")){
       faceapi.draw.drawDetections(canvas, resizedDetections)
     }
