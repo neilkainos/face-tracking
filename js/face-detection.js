@@ -6,6 +6,32 @@ let displaySize;
 let convas;
 let faceDetection;
 
+$('#startcamera').click(function(){
+  webcam.start().then(result =>{
+     cameraStarted();
+     webcamElement.style.transform = "";
+     console.log("webcam started");
+  })
+  .catch(err => {
+      displayError();
+  });
+  toggleContrl("box-switch", true);
+  toggleContrl("landmarks-switch", true);
+  toggleContrl("expression-switch", true);
+  toggleContrl("age-gender-switch", true);
+  $("#box-switch").prop('checked', true);
+  $(".loading").removeClass('d-none');
+  Promise.all([
+    faceapi.nets.tinyFaceDetector.load(modelPath),
+    faceapi.nets.faceLandmark68TinyNet.load(modelPath),
+    faceapi.nets.faceExpressionNet.load(modelPath),
+    faceapi.nets.ageGenderNet.load(modelPath)
+  ]).then(function(){
+    createCanvas();
+    startDetection();
+  })
+});
+
 $("#webcam-switch").change(function () {
   if(this.checked){
       webcam.start()
