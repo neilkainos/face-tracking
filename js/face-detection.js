@@ -15,6 +15,7 @@ $('#startcamera').click(function(){
   .catch(err => {
       displayError();
   });
+
   toggleContrl("box-switch", true);
   toggleContrl("landmarks-switch", true);
   toggleContrl("expression-switch", true);
@@ -32,24 +33,7 @@ $('#startcamera').click(function(){
   })
 });
 
-$("#webcam-switch").change(function () {
-  if(this.checked){
-      webcam.start()
-          .then(result =>{
-             cameraStarted();
-             webcamElement.style.transform = "";
-             console.log("webcam started");
-          })
-          .catch(err => {
-              displayError();
-          });
-  }
-  else {
-      cameraStopped();
-      webcam.stop();
-      console.log("webcam stopped");
-  }
-});
+
 
 $('#cameraFlip').click(function() {
     webcam.flip();
@@ -63,37 +47,7 @@ $("#webcam").bind("loadedmetadata", function () {
   displaySize = { width:this.scrollWidth, height: this.scrollHeight }
 });
 
-$("#detection-switch").change(function () {
-  if(this.checked){
-    toggleContrl("box-switch", true);
-    toggleContrl("landmarks-switch", true);
-    toggleContrl("expression-switch", true);
-    toggleContrl("age-gender-switch", true);
-    $("#box-switch").prop('checked', true);
-    $(".loading").removeClass('d-none');
-    Promise.all([
-      faceapi.nets.tinyFaceDetector.load(modelPath),
-      faceapi.nets.faceLandmark68TinyNet.load(modelPath),
-      faceapi.nets.faceExpressionNet.load(modelPath),
-      faceapi.nets.ageGenderNet.load(modelPath)
-    ]).then(function(){
-      createCanvas();
-      startDetection();
-    })
-  }
-  else {
-    clearInterval(faceDetection);
-    toggleContrl("box-switch", false);
-    toggleContrl("landmarks-switch", false);
-    toggleContrl("expression-switch", false);
-    toggleContrl("age-gender-switch", false);
-    if(typeof canvas !== "undefined"){
-      setTimeout(function() {
-        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-      }, 1000);
-    }
-  }
-});
+
 
 function createCanvas(){
   if( document.getElementsByTagName("canvas").length == 0 )
