@@ -10,7 +10,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
     <link rel="stylesheet" href="style/face-detection.css">
         <link rel="stylesheet" href="style/govuk.css">
+    <style>
+    #idcheck {
+      display: none;
+    }
+    </style>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+      setTimeout(function() {
+        $('#idcheck').show();
+      }, 5000);
+    </script>
     <script src='js/face-api.min.js'></script>
     <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
 </head>
@@ -78,7 +88,7 @@
                                     <input type="checkbox" disabled id="age-gender-switch">
                                     <i></i> Age & Gender </label>
                             </div>
-    
+
                     </div>
                 </div>
                 <div class="col-12 col-md-8 col-xl-9 align-top" id="webcam-container">
@@ -96,7 +106,7 @@
                 </div>
             </div>
         </div>
-        <a href="https://ri-proto-a4f2e24d1ba1.herokuapp.com/test-experience/check-room" class="govuk-button">Continue</a>
+        <a id="idcheck" href="https://ri-proto-a4f2e24d1ba1.herokuapp.com/test-experience/check-room" class="govuk-button">Continue</a>
       </div>
     </div>
 
