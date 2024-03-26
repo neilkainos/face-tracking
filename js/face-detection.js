@@ -94,10 +94,6 @@ function startDetection(){
     const detections = await faceapi.detectAllFaces(webcamElement, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks(true).withFaceExpressions().withAgeAndGender()
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-    setTimeout(function() {
-      $('#continue').show();
-    }, 5000);
-
     if($("#box-switch").is(":checked")){
       faceapi.draw.drawDetections(canvas, resizedDetections)
     }
@@ -123,6 +119,9 @@ function startDetection(){
     if(!$(".loading").hasClass('d-none')){
       $(".loading").addClass('d-none')
     }
+    setTimeout(function() {
+      $('#continue').show();
+    }, 5000);
   }, 300)
 }
 
