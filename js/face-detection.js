@@ -5,7 +5,7 @@ let currentStream;
 let displaySize;
 let convas;
 let faceDetection;
-$('#continue').hide();
+
 $("#webcam-switch").change(function () {
   if(this.checked){
       webcam.start()
