@@ -119,9 +119,6 @@ function startDetection(){
     if(!$(".loading").hasClass('d-none')){
       $(".loading").addClass('d-none')
     }
-    setTimeout(function() {
-      $('#continue').show();
-    }, 5000);
   }, 300)
 }
 
