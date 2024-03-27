@@ -1,7 +1,7 @@
   #webcam-container {
     padding: 0;
   }
-  
+
   canvas {
     position: absolute;
     top: 0;
@@ -54,12 +54,12 @@
     z-index:300000;
     filter: alpha(opacity=80);
     -moz-opacity: 0.8;
-    opacity: 0.8;   
+    opacity: 0.8;
   }
 
   @media screen and (max-width: 575px) {
     .form-control {
-      height: 40px;
+      height: 60px;
       margin-bottom: 5px;
       padding: 15px 0px 15px 10px;
       border: 0px;
@@ -69,8 +69,9 @@
     .form-control {
       padding-top: 15px;
       padding-bottom: 15px;
-      height: 60px;
-      margin-bottom: 5px; 
+      height: 86px;
+      margin-bottom: 5px;
+      background:	#f3f2f1;
     }
   }
 
@@ -83,7 +84,7 @@
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
   }
-  
+
   .form-switch i {
     position: relative;
     display: inline-block;
@@ -95,7 +96,7 @@
     vertical-align: text-bottom;
     transition: all 0.3s linear;
   }
-  
+
   .form-switch i::before {
     content: "";
     position: absolute;
@@ -107,7 +108,7 @@
     transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
     transition: all 0.25s linear;
   }
-  
+
   .form-switch i::after {
     content: "";
     position: absolute;
@@ -120,20 +121,20 @@
     transform: translate3d(2px, 2px, 0);
     transition: all 0.2s ease-in-out;
   }
-  
+
   .form-switch:active i::after {
     width: 28px;
     transform: translate3d(2px, 2px, 0);
   }
-  
+
   .form-switch:active input:checked + i::after { transform: translate3d(16px, 2px, 0); }
-  
+
   .form-switch input { display: none; }
-  
+
   .form-switch input:checked + i { background-color: #4BD763; }
-  
+
   .form-switch input:checked + i::before { transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0); }
-  
+
   .form-switch input:checked + i::after { transform: translate3d(22px, 2px, 0); }
 
   .form-switch input:disabled + i { background-color: #eeeeee; cursor: not-allowed; }
