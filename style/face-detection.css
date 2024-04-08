@@ -84,13 +84,11 @@
   .camerasList {
     width: 90%;
   }
-
   .form-switch {
     display: inline-block;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
   }
-
   .form-switch i {
     position: relative;
     display: inline-block;
