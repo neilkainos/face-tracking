@@ -47,7 +47,7 @@ $("#detection-switch").change(function () {
     $(".loading").removeClass('d-none');
     setTimeout(function() {
       $('#scancomplete').show();
-    }, 5000);
+    }, 10000);
     Promise.all([
       faceapi.nets.tinyFaceDetector.load(modelPath),
       faceapi.nets.faceLandmark68TinyNet.load(modelPath),
