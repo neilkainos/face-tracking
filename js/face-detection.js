@@ -45,6 +45,9 @@ $("#detection-switch").change(function () {
     toggleContrl("age-gender-switch", true);
     $("#box-switch").prop('checked', true);
     $(".loading").removeClass('d-none');
+    setTimeout(function() {
+      console.log('scanning');
+    }, 2600);
     Promise.all([
       faceapi.nets.tinyFaceDetector.load(modelPath),
       faceapi.nets.faceLandmark68TinyNet.load(modelPath),
@@ -95,8 +98,7 @@ function startDetection(){
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     if($("#box-switch").is(":checked")){
-      faceapi.draw.drawDetections(canvas, resizedDetections);
-      console.log('face detection started');
+      faceapi.draw.drawDetections(canvas, resizedDetections)
     }
     if($("#landmarks-switch").is(":checked")){
       faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
