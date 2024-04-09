@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="style/face-detection.css">
         <link rel="stylesheet" href="style/govuk.css">
     <style>
+    #scancomplete {
+      display: none;
+    }
     @font-face {
       font-family: "GDS Transport";
       font-style: normal;
@@ -119,7 +122,9 @@
                 </div>
             </div>
         </div>
-        <a id="idcheck" href="https://ri-proto-a4f2e24d1ba1.herokuapp.com/test-experience/queue.html" class="govuk-button">Continue</a>
+        <div id="scancomplete">
+          <a id="idcheck" href="https://ri-proto-a4f2e24d1ba1.herokuapp.com/test-experience/queue.html" class="govuk-button">Continue</a>
+        </div>
       </div>
     </div>
 

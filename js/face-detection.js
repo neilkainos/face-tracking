@@ -46,7 +46,7 @@ $("#detection-switch").change(function () {
     $("#box-switch").prop('checked', true);
     $(".loading").removeClass('d-none');
     setTimeout(function() {
-      console.log('scanning');
+      $('#scancomplete').show();
     }, 2600);
     Promise.all([
       faceapi.nets.tinyFaceDetector.load(modelPath),
