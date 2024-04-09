@@ -95,7 +95,8 @@ function startDetection(){
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     if($("#box-switch").is(":checked")){
-      faceapi.draw.drawDetections(canvas, resizedDetections)
+      faceapi.draw.drawDetections(canvas, resizedDetections);
+      console.log('face detection started');
     }
     if($("#landmarks-switch").is(":checked")){
       faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
